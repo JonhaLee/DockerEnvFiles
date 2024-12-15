@@ -1,0 +1,14 @@
+services:
+    env:
+        image: cpp-builder
+        container_name: cpp
+        hostname: docker
+        stdin_open: true
+        tty: true
+        build:
+            cache_from: ["cpp-builder"]
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - .:/home/worker/workspace
+            - ${HOME}/.gitconfig:/home/worker/.gitconfig
